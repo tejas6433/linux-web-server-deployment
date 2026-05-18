@@ -217,7 +217,7 @@ ssh admin@192.168.xx.xx
 ## Screenshots
 
 ### 1. VirtualBox VM Running
-![VM Running]()
+![VM Running](Screenshots/Ubuntu-server-ssh-working.png)
 *Ubuntu Server 26.04 LTS running in VMware with 4GB RAM*
 
 ### 2. Terminal Commands
