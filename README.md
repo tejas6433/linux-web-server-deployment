@@ -217,11 +217,11 @@ ssh admin@192.168.220.131
 ## Screenshots
 
 ### 1. VirtualBox VM Running
-![VM Running](screenshots/01-vm-running.png)
+![VM Running]()
 *Ubuntu Server 26.04 LTS running in VMware with 4GB RAM*
 
 ### 2. Terminal Commands
-![Terminal](screenshots/07-terminal-commands.png)
+![Terminal](Screenshots/MacOS-Terminal.png)
 *MacOS terminal showing key administrative commands*
 
 ---
