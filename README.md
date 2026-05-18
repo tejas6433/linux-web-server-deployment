@@ -190,7 +190,7 @@ ip addr show
 
 **4. Connect from Host Machine**
 ```bash
-ssh admin@192.168.220.131
+ssh admin@192.168.xx.xx
 ```
 
 
