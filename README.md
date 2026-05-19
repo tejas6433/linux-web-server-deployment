@@ -67,6 +67,13 @@ A fully functional LAMP stack running on Ubuntu Server in VirtualBox, with WordP
 │  │                                                        │  │
 │  └────────────────────────────────────────────────────────┘  │
 │                                                              │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  |    Apache Web Server                                   │  │
+│  |    (Port 80)                                           │  │  
+│  |                                                        │  │
+│  |                                                        │  │
+│  └────────────────────────────────────────────────────────┘  │
+│                                                              │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -78,7 +85,7 @@ A fully functional LAMP stack running on Ubuntu Server in VirtualBox, with WordP
 - **Ubuntu Server 26.04 LTS** - Professional Linux distribution
 
 ### Web Server
-- TBD
+- **Apache 2.4.66**  - World's most popular web server
 
 ### Database
 - TBD
@@ -117,12 +124,12 @@ By completing this project, I can confidently:
 - [x] Understand boot processes and service dependencies
 
 ### ✅ Web Server Administration
-- [ ] Install and configure Apache web server
-- [ ] Create virtual hosts (multiple websites on one server)
-- [ ] Enable and disable Apache modules
-- [ ] Understand HTTP and port concepts
-- [ ] Configure document root and file serving
-- [ ] Read and interpret Apache logs
+- [x] Install and configure Apache web server
+- [x] Create virtual hosts (multiple websites on one server)
+- [x] Enable and disable Apache modules
+- [x] Understand HTTP and port concepts
+- [x] Configure document root and file serving
+- [x] Read and interpret Apache logs
 
 ### ✅ Database Administration
 - [ ] Install and secure MySQL database
@@ -192,7 +199,12 @@ ip addr show
 ```bash
 ssh admin@192.168.xx.xx
 ```
-
+**5. Install Apache**
+```bash
+sudo apt install apache2 -y
+sudo systemctl start apache2
+sudo systemctl enable apache2
+```
 
 ---
 
