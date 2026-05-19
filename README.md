@@ -88,16 +88,18 @@ A fully functional LAMP stack running on Ubuntu Server in VirtualBox, with WordP
 - **Apache 2.4.66**  - World's most popular web server
 
 ### Database
-- TBD
+- **MySQL 8.0** - Relational database management
+- **Port 3306** - MySQL server port
 
 ### Server-Side Language
-- TBD
+- **PHP 8.1** - Server-side scripting language
+- **libapache2-mod-php** - Apache-PHP integration
 
 ### Database Administration
-- TBD
+- **phpMyAdmin** - Web interface for MySQL management
 
 ### Content Management System
-- TBD
+- **WordPress 6.x** - Full-featured CMS
 
 ### Infrastructure
 - **VMware Fusion Professional 25H2** - Virtualization platform
@@ -132,18 +134,18 @@ By completing this project, I can confidently:
 - [x] Read and interpret Apache logs
 
 ### ✅ Database Administration
-- [ ] Install and secure MySQL database
-- [ ] Create databases and users
-- [ ] Manage user privileges and access control
-- [ ] Back up and restore databases
-- [ ] Use phpMyAdmin for database management
+- [x] Install and secure MySQL database
+- [x] Create databases and users
+- [x] Manage user privileges and access control
+- [x] Back up and restore databases
+- [x] Use phpMyAdmin for database management
 
 ### ✅ Application Deployment
-- [ ] Deploy PHP applications
-- [ ] Configure PHP-MySQL integration
-- [ ] Install and configure WordPress
-- [ ] Manage WordPress users and content
-- [ ] Understand application-server-database architecture
+- [x] Deploy PHP applications
+- [x] Configure PHP-MySQL integration
+- [x] Install and configure WordPress
+- [x] Manage WordPress users and content
+- [x] Understand application-server-database architecture
 
 ### ✅ Troubleshooting & Debugging
 - [ ] Systematically diagnose service failures
@@ -155,9 +157,9 @@ By completing this project, I can confidently:
 ### ✅ Infrastructure Concepts
 - [x] Understand virtualization (VMware)
 - [x] Configure networking (IP addresses, ports, SSH)
-- [ ] Understand DNS basics
-- [ ] Implement security best practices
-- [ ] Document infrastructure professionally
+- [x] Understand DNS basics
+- [x] Implement security best practices
+- [x] Document infrastructure professionally
 
 ---
 
@@ -206,6 +208,35 @@ sudo systemctl start apache2
 sudo systemctl enable apache2
 ```
 
+**6. Install MySQL**
+```bash
+sudo apt install mysql-server -y
+sudo mysql_secure_installation
+```
+
+**7. Install PHP**
+```bash
+sudo apt install php libapache2-mod-php php-mysql -y
+sudo systemctl restart apache2
+```
+
+**8. Install phpMyAdmin**
+```bash
+sudo apt install phpmyadmin -y
+# Select apache2 during installation
+```
+
+**9. Install WordPress**
+```bash
+wget https://wordpress.org/latest.tar.gz
+tar -xzf latest.tar.gz
+sudo cp -r wordpress /var/www/html/
+sudo chown -R www-data:www-data /var/www/html/wordpress
+```
+
+**10. Complete WordPress Setup**
+- Navigate to `http://192.168.x.x/wordpress/`
+- Complete installation wizard
 ---
 
 ## Key Learnings
@@ -223,6 +254,22 @@ sudo systemctl enable apache2
 ✅ Problem-solving under constraints  
 ✅ Learning independently from errors  
 ✅ Translating concepts to practice  
+
+
+### Infrastructure Architecture
+✅ Multi-tier application stack  
+✅ Service dependencies and boot order  
+✅ Networking (IP, ports, DNS)  
+✅ Virtualization concepts  
+✅ SSH remote access  
+
+### Troubleshooting Methodology
+✅ Systematic problem diagnosis  
+✅ Log file interpretation and analysis  
+✅ Service restart procedures  
+✅ Permission issue resolution  
+✅ Intentional breaking and fixing (learning by doing)  
+
 
 ---
 
@@ -299,7 +346,7 @@ This project is for educational purposes. Free to fork and modify for learning.
 
 ## About This Project
 
-**Project Duration:** 2/10 days  
+**Project Duration:** 5/10 days  
 **Created:** May 2026  
 **Last Updated:** May 2026  
 **Status:** in progress
