@@ -32,49 +32,50 @@ A fully functional LAMP stack running on Ubuntu Server in VirtualBox, with WordP
 ## System Architecture
 
 ```text
-┌──────────────────────────────────────────────────────────────┐
-│                     MacBook Host (macOS)                     │
-│──────────────────────────────────────────────────────────────│
-│                                                              │
-│  • Terminal (SSH Client)                                     │
-│                                                              │
-│                                                              │
-└──────────────────────────────┬───────────────────────────────┘
-                               │
-                       SSH (Port 22)
-                               │
-                               ▼
-┌──────────────────────────────────────────────────────────────┐
-│            VMware Fusion Pro Virtualization Layer            │
-│──────────────────────────────────────────────────────────────│
-│  Virtual Network Adapter (NAT / Bridged Mode)                │
-│                                                              │
-│  Routes traffic from macOS → VM                              │
-└──────────────────────────────┬───────────────────────────────┘
-                               │
-                               ▼
-┌──────────────────────────────────────────────────────────────┐
-│                 Ubuntu Server 26.04 (VM)                     │
-│──────────────────────────────────────────────────────────────│
-│                                                              │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │                 OpenSSH Server                         │  │
-│  │────────────────────────────────────────────────────────│  │
-│  │                                                        │  │
-│  │  • Listening on Port 22                                │  │
-│  │  • Handles SSH authentication                          │  │
-│  │  • Remote shell access                                 │  │
-│  │                                                        │  │
-│  └────────────────────────────────────────────────────────┘  │
-│                                                              │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  |    Apache Web Server                                   │  │
-│  |    (Port 80)                                           │  │  
-│  |                                                        │  │
-│  |                                                        │  │
-│  └────────────────────────────────────────────────────────┘  │
-│                                                              │
-└──────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────┐
+│   Your MacBook (Host Machine)       │
+│   - Terminal                        │
+│   - Browser                         │
+│   - SSH Client                      │
+└────────────────┬────────────────────┘
+                 |
+      SSH Connection (Port 22)
+      HTTP Request (Port 80)
+                 |
+                 ▼
+┌─────────────────────────────────────┐
+│   VirtualBox Virtual Machine        │
+│                                     │
+│   ┌─────────────────────────────┐   │
+│   │  Ubuntu Server 26.04 LTS    │   │
+│   │                             │   │
+│   │  ┌───────────────────────┐  │   │
+│   │  │  Apache2 Web Server   │  │   │
+│   │  │  (Port 80)            │  │   │
+│   │  │                       │  │   │
+│   │  │  ├─ PHP Module        │  │   │
+│   │  │  └─ WordPress CMS     │  │   │
+│   │  └───────────┬───────────┘  │   │
+│   │              │              │   │
+│   │  ┌───────────▼───────────┐  │   │
+│   │  │  MySQL Database       │  │   │
+│   │  │  (Port 3306)          │  │   │
+│   │  │                       │  │   │
+│   │  │  - wordpress_db       │  │   │
+│   │  │  - WordPress tables   │  │   │
+│   │  │  - User data          │  │   │
+│   │  └───────────────────────┘  │   │
+│   │              |              │   │
+│   │  ┌───────────▼───────────┐  │   │
+│   │  │  phpMyAdmin           │  │   │
+│   │  │  (Web DB Manager)     │  │   │
+│   │  └───────────────────────┘  │   │
+│   └─────────────────────────────┘   │
+│                                     │
+│  Storage: 30GB (dynamic)            │
+│  RAM: 4GB                           │
+│  CPUs: 2-4 cores                    │
+└─────────────────────────────────────┘
 ```
 
 ---
@@ -86,20 +87,21 @@ A fully functional LAMP stack running on Ubuntu Server in VirtualBox, with WordP
 
 ### Web Server
 - **Apache 2.4.66**  - World's most popular web server
-
+- **Port 80** - Standard web traffic
+  
 ### Database
-- **MySQL 8.0** - Relational database management
+- **MySQL 8.4.4** - Relational database management
 - **Port 3306** - MySQL server port
 
 ### Server-Side Language
-- **PHP 8.1** - Server-side scripting language
+- **PHP 8.5.4 (cli)** - Server-side scripting language
 - **libapache2-mod-php** - Apache-PHP integration
 
 ### Database Administration
 - **phpMyAdmin** - Web interface for MySQL management
 
 ### Content Management System
-- **WordPress 6.x** - Full-featured CMS
+- **WordPress 7.0** - Full-featured CMS
 
 ### Infrastructure
 - **VMware Fusion Professional 25H2** - Virtualization platform
@@ -148,11 +150,11 @@ By completing this project, I can confidently:
 - [x] Understand application-server-database architecture
 
 ### ✅ Troubleshooting & Debugging
-- [ ] Systematically diagnose service failures
-- [ ] Interpret system logs (Apache, MySQL, systemd)
-- [ ] Resolve permission and connectivity issues
-- [ ] Recover from configuration mistakes
-- [ ] Test and validate fixes
+- [x] Systematically diagnose service failures
+- [x] Interpret system logs (Apache, MySQL, systemd)
+- [x] Resolve permission and connectivity issues
+- [x] Recover from configuration mistakes
+- [x] Test and validate fixes
 
 ### ✅ Infrastructure Concepts
 - [x] Understand virtualization (VMware)
@@ -174,7 +176,7 @@ By completing this project, I can confidently:
 
 ### Quick Start
 
-**1. Create Virtual Machine in VirtualBox**
+**1. Create Virtual Machine in VMWare**
 ```bash
 # Name: Ubuntu 64-bit Arm Server 26.04
 # RAM: 4096 MB
@@ -275,7 +277,7 @@ sudo chown -R www-data:www-data /var/www/html/wordpress
 
 ## Screenshots
 
-### 1. VirtualBox VM Running
+### 1. VMware VM Running
 ![VM Running](Screenshots/Ubuntu-server-ssh-working.png)
 *Ubuntu Server 26.04 LTS running in VMware with 4GB RAM*
 
@@ -283,7 +285,59 @@ sudo chown -R www-data:www-data /var/www/html/wordpress
 ![Terminal](Screenshots/MacOS-Terminal.png)
 *MacOS terminal showing key administrative commands*
 
+
+### 2. Apache Default Page
+![Apache Page](Screenshots/apache2-default-homepage.png)
+*Apache web server successfully serving default page*
+
+### 3. Custom HTML Homepage
+![Custom Page](Screenshots/apache2-custom-homepage.png)
+*Custom HTML page demonstrating Apache file serving*
+
+### 4. phpMyAdmin Dashboard
+![phpMyAdmin](Screenshots/php-default-page.png)
+*phpMyAdmin interface showing WordPress database and tables*
+
+### 5. WordPress Admin Dashboard
+![WordPress Admin](Screenshots/wordpress-dashboard.png)
+*WordPress admin panel with full CMS functionality*
+
+### 6. WordPress Homepage
+![WordPress Site](Screenshots/wordpress-homepage.png)
+*Live WordPress website running on local server*
+
 ---
+
+
+## 🔧 How It Works
+
+- User types URL in browser: http://192.168.x.x/
+- Browser sends HTTP request to VM port 80
+- Apache receives request on port 80
+- Apache checks requested file in /var/www/html/
+- Apache returns HTML file to browser
+- Browser renders the page
+
+For dynamic content (WordPress):
+
+- Browser requests: http://192.168.x.x/wordpress/
+- Apache passes request to PHP module
+- PHP executes WordPress code
+- WordPress queries MySQL database
+- MySQL returns data
+- PHP generates HTML with data
+- Apache sends HTML to browser
+- Browser displays complete page
+
+
+### Service Dependencies
+
+Boot Order:
+1. Linux kernel starts
+2. Systemd (init system) starts
+3. MySQL starts (database layer)
+4. Apache starts (web server layer)
+5. PHP loads (application processor)
 
 ## Relevant to SFU FCAT Role
 
@@ -292,7 +346,14 @@ This project directly addresses the **SFU FCAT Research Assistant** job requirem
 | Requirement | Demonstrated |
 |------------|--------------|
 | Linux VM/Web Server Setup | ✅ Complete from scratch |
+| Apache Configuration | ✅ Installed and configured |
+| MySQL Database | ✅ Installed and managed |
+| PHP Integration | ✅ Enabled and tested |
+| WordPress CMS | ✅ Fully operational |
+| System Administration | ✅ Users, permissions, services |
+| Troubleshooting | ✅ Systematic approach documented |
 | Documentation | ✅ Comprehensive guides included |
+
 
 **This project demonstrates I can:**
 - Work independently on complex systems
