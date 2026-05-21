@@ -19,14 +19,18 @@ A fully functional LAMP stack running on Ubuntu Server in VirtualBox, with WordP
 
 - Skills Demonstrated
 
-  - Linux system administration (users, permissions, services)
-  - Web server configuration (Apache)
-  - Database design and management (MySQL)
-  - Server-side scripting (PHP)
-  - Application deployment (WordPress)
-  - Systematic troubleshooting and debugging
+- ✅ Linux OS installation and administration
+- ✅ Apache web server configuration
+- ✅ MySQL database setup and management
+- ✅ PHP integration
+- ✅ WordPress CMS deployment
+- ✅ Security hardening
+- ✅ Performance optimization
+- ✅ Professional documentation
 
-
+**Environment:** Ubuntu Server 26 LTS on VMware Fusion Pro
+**Duration:** 10 days of intensive hands-on learning
+**Status:** Complete and operational
 
 
 ## System Architecture
@@ -309,7 +313,7 @@ sudo chown -R www-data:www-data /var/www/html/wordpress
 ---
 
 
-## 🔧 How It Works
+## How It Works
 
 - User types URL in browser: http://192.168.x.x/
 - Browser sends HTTP request to VM port 80
@@ -364,20 +368,25 @@ This project directly addresses the **SFU FCAT Research Assistant** job requirem
 
 ---
 
-## What I'd Do Differently in Production
+### Transferable Skills
+- Linux administration
+- Web server management
+- Database administration
+- System optimization
+- Security implementation
+- Independent learning
 
-This project is a learning foundation. For production systems, I would:
+## Next Steps for Production
 
-- [ ] Containerize with Docker for isolation and scalability
-- [ ] Implement load balancing for redundancy
-- [ ] Use managed databases (AWS RDS) to reduce ops burden
-- [ ] Enable SSL/TLS (HTTPS) with Let's Encrypt
-- [ ] Implement automated backups (encrypted, off-site)
-- [ ] Set up monitoring and alerting (Prometheus, Grafana)
-- [ ] Use Infrastructure as Code (Terraform, Ansible)
-- [ ] Implement CI/CD pipeline (GitHub Actions)
-- [ ] Database replication for disaster recovery
-- [ ] Implement comprehensive security scanning
+To deploy to production:
+- [ ] Use managed database (AWS RDS)
+- [ ] Use cloud hosting (AWS EC2, DigitalOcean)
+- [ ] Implement automated backups
+- [ ] Set up monitoring and alerting
+- [ ] Use load balancing for scale
+- [ ] Implement CI/CD pipeline
+- [ ] Use Infrastructure as Code (Terraform)
+- [ ] Regular security audits
 
 ---
 
